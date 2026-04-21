@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
 
 ## ----packages, eval=T, echo=T, message=F, warning = FALSE---------------------
 ## Data prep:
-library(tidyverse) # version: tidyverse_2.0.0 
+library(tidyverse) # version: tidyverse_2.0.0
 library(dplyr) #version: dplyr_1.1.4
 library(stats) # version: stats4
 library(fastDummies) # version: fastDummies_1.7.3
@@ -16,11 +16,11 @@ library(reshape2) #version: reshape2_1.4.4
 #devtools::install_github("dasiegel/IRT-M")
 library(IRTM) #version 1.00
 
-## Results visualization: 
+## Results visualization:
 library(ggplot2)  # version: ggplot2_3.4.4
-library(ggridges) #version: ggridges_0.5.6 
+library(ggridges) #version: ggridges_0.5.6
 library(RColorBrewer) #version: RColorBrewer_1.1-3
-library(ggrepel) # version: ggrepel_0.9.5 
+library(ggrepel) # version: ggrepel_0.9.5
 
 ## ----load-dat, eval=T, echo=T, message=F, warning = FALSE---------------------
 
@@ -46,7 +46,7 @@ rm(ebdatsynth)
 load('./vdata/mcodes.rda')
 
 ## Only keep M-Codes with loadings or outcomes:
-MCodes$encoding <- rowSums(abs(MCodes[,4:9])) 
+MCodes$encoding <- rowSums(abs(MCodes[,4:9]))
 MCodes <- MCodes[which(MCodes$encoding > 0),]
 
 
@@ -54,17 +54,17 @@ MCodes <- MCodes[which(MCodes$encoding > 0),]
 ## Produce a K-coded questions x R-responses data frame:
 
 d <- 6 #number of coded dimensions
-mcolumns <- c("QMap", "D1-Culture threat", 
-              "D2-ReligionThreat", 
+mcolumns <- c("QMap", "D1-Culture threat",
+              "D2-ReligionThreat",
               "D3-Economic Threat",
               "D4-HealthThreat",
               "O1-OutcomeSupportImmigration", "O2-OutcomeSupportEU")
 
-combine <- MCodes[,mcolumns] %>% ## question codes and loadings 
+combine <- MCodes[,mcolumns] %>% ## question codes and loadings
     inner_join(
-        Y %>% 
-        t() %>% 
-        as.data.frame(stringsAsFactors = FALSE) %>% 
+        Y %>%
+        t() %>%
+        as.data.frame(stringsAsFactors = FALSE) %>%
         type_convert() %>%
         rownames_to_column(var = "question"),
         by = c("QMap" = "question"  )
@@ -79,11 +79,11 @@ Y_in <- combine[, (d+2):ncol(combine)]%>%
 
 Y_in <- as.data.frame(sapply(Y_in, as.numeric))
 
-## Take the question names and 
+## Take the question names and
 ## convert to column names
 
 question <- combine[,1] %>%
-    as.data.frame() 
+    as.data.frame()
 colnames(Y_in) <- question[,1]
 rm(combine)
 rm(question)
@@ -125,11 +125,11 @@ theta_corr
 
 
 ## ----viz-thetas, eval=T, echo=T, echo=T, message=F, warning = FALSE-----------
-library(ggplot2) #version: ggplot2_3.4.4 
-library(ggridges) #version: ggridges_0.5.6 
+library(ggplot2) #version: ggplot2_3.4.4
+library(ggridges) #version: ggridges_0.5.6
 library(RColorBrewer) #version: RColorBrewer_1.1-3
 library(dplyr) #version: dplyr_1.1.4
-library(ggrepel) # version: ggrepel_0.9.5 
+library(ggrepel) # version: ggrepel_0.9.5
 library(reshape2) #version: reshape2_1.4.4
 
 

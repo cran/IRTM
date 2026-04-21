@@ -1,6 +1,6 @@
 Package: IRTM
 Title: Theory-Driven Item Response Theory (IRT) Models
-Version: 0.0.1.1
+Version: 0.0.1.2
 Authors@R: 
     c(person(given = "Marco",
            family = "Morucci",
@@ -8,12 +8,12 @@ Authors@R:
            email = "moruccim@msu.edu"),
     person(given = "Margaret",
            family = "Foster",
-           role = "cre",
+           role = "aut",
             email = "m.jenkins.foster@gmail.com",
            comment = c(ORCID = "0000-0002-6418-8394")),
     person(given = "David",
            family = "Siegel",
-           role = "aut",
+           role = c("aut", "cre"),
 	   email = "david.siegel@duke.edu",
            comment = c(ORCID = "0000-0003-1619-6119")))
 Description: IRT-M is a semi-supervised approach based on Bayesian Item Response Theory
@@ -35,10 +35,11 @@ Imports: coda, Rcpp, RcppArmadillo, ggridges, rlang, dplyr, reshape2,
 Config/testthat/edition: 3
 Language: en-US
 NeedsCompilation: yes
-Packaged: 2025-04-16 20:29:50 UTC; Promachos
+Packaged: 2026-04-20 12:46:32 UTC; Promachos
 Author: Marco Morucci [aut],
-  Margaret Foster [cre] (<https://orcid.org/0000-0002-6418-8394>),
-  David Siegel [aut] (<https://orcid.org/0000-0003-1619-6119>)
-Maintainer: Margaret Foster <m.jenkins.foster@gmail.com>
+  Margaret Foster [aut] (ORCID: <https://orcid.org/0000-0002-6418-8394>),
+  David Siegel [aut, cre] (ORCID:
+    <https://orcid.org/0000-0003-1619-6119>)
+Maintainer: David Siegel <david.siegel@duke.edu>
 Repository: CRAN
-Date/Publication: 2025-04-19 12:22:01 UTC
+Date/Publication: 2026-04-21 06:50:02 UTC
